@@ -1,0 +1,143 @@
+@import "tailwindcss";
+
+
+* {
+    font-family: 'Poppins', Arial;
+    font-weight: 400;
+}
+
+:root {
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    background-image: url('./assets/universe.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+@media (max-width: 768px) {
+    .container {
+        /* background: pink; */
+        /* border: 5px solid red; */
+        width: 90vw;
+        height: 80vh;
+        overflow: auto;
+        scrollbar-color: rgb(134, 13, 214);
+        padding: 1rem 0;
+    }
+
+    .item {
+        background-color: red;
+    }
+}
+
+.container {
+    width: 70vw;
+    /* height: screen; */
+    /* background-color: rgba(255, 255, 255, 0); */
+
+    background-color: transparent;
+    backdrop-filter: blur(5px);
+    border: 1px solid white;
+    border-radius: 1rem;
+    padding: 2rem 0;
+    /* columns: 3; */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-around;
+    align-items: center;
+}
+
+/* .main {
+    width: 70vw;
+    border-radius: 1rem;
+    padding: 2rem 0;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+
+
+} */
+
+
+.item {
+    width: 200px;
+    /* height: 80px; */
+    text-align: center;
+    padding: 1rem;
+    background-color: #0b5ee4;
+    color: white;
+    font-weight: 200;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+.item:hover {
+    background-color: rgb(22, 62, 150);
+    transform: scale(1.05);
+    text-shadow: white 0px 0px 5px;
+}
+
+
+
+/* Converter component styles */
+@keyframes appear {
+    0% {
+        width: 0%;
+        opacity: 0;
+    }
+
+    50% {
+        width: 50%;
+        opacity: 0.5;
+    }
+
+    100% {
+        width: 100%;
+        opacity: 1;
+    }
+}
+
+
+
+.main {
+    width: 100%;
+    max-width: 600px;
+    height: 100%;
+    max-height: 600px;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    position: relative;
+    border: 1px solid white;
+    z-index: 10;
+    animation: appear 0.4s ease-in-out forwards;
+}
+
+/* Overlay styles */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 5;
+    cursor: pointer;
+}
+
+/* Container for the converter component with overlay */
+#my-component-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}

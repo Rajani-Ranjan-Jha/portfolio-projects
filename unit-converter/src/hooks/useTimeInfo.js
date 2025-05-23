@@ -1,0 +1,136 @@
+import { useEffect, useState } from 'react';
+
+export default function useTimeInfo(time) {
+  const [data, setData] = useState({});
+
+  const conversionFactors = {
+    'Second (s)': {
+      'Second (s)': 1,
+      'Millisecond (ms)': 1000,
+      'Microsecond (µs)': 1e+6,
+      'Nanosecond (ns)': 1e+9,
+      'Minute (min)': 1/60,
+      'Hour (h)': 1/3600,
+      'Day (d)': 1/86400,
+      'Week (wk)': 1/604800,
+      'Month (mo)': 1/2.628e+6,
+      'Year (yr)': 1/3.154e+7,
+    },
+    'Millisecond (ms)': {
+      'Second (s)': 0.001,
+      'Millisecond (ms)': 1,
+      'Microsecond (µs)': 1000,
+      'Nanosecond (ns)': 1e+6,
+      'Minute (min)': 0.001/60,
+      'Hour (h)': 0.001/3600,
+      'Day (d)': 0.001/86400,
+      'Week (wk)': 0.001/604800,
+      'Month (mo)': 0.001/2.628e+6,
+      'Year (yr)': 0.001/3.154e+7,
+    },
+    'Microsecond (µs)': {
+      'Second (s)': 1e-6,
+      'Millisecond (ms)': 0.001,
+      'Microsecond (µs)': 1,
+      'Nanosecond (ns)': 1000,
+      'Minute (min)': 1e-6/60,
+      'Hour (h)': 1e-6/3600,
+      'Day (d)': 1e-6/86400,
+      'Week (wk)': 1e-6/604800,
+      'Month (mo)': 1e-6/2.628e+6,
+      'Year (yr)': 1e-6/3.154e+7,
+    },
+    'Nanosecond (ns)': {
+      'Second (s)': 1e-9,
+      'Millisecond (ms)': 1e-6,
+      'Microsecond (µs)': 0.001,
+      'Nanosecond (ns)': 1,
+      'Minute (min)': 1e-9/60,
+      'Hour (h)': 1e-9/3600,
+      'Day (d)': 1e-9/86400,
+      'Week (wk)': 1e-9/604800,
+      'Month (mo)': 1e-9/2.628e+6,
+      'Year (yr)': 1e-9/3.154e+7,
+    },
+    'Minute (min)': {
+      'Second (s)': 60,
+      'Millisecond (ms)': 60000,
+      'Microsecond (µs)': 6e+7,
+      'Nanosecond (ns)': 6e+10,
+      'Minute (min)': 1,
+      'Hour (h)': 1/60,
+      'Day (d)': 1/1440,
+      'Week (wk)': 1/10080,
+      'Month (mo)': 1/43800,
+      'Year (yr)': 1/525600,
+    },
+    'Hour (h)': {
+      'Second (s)': 3600,
+      'Millisecond (ms)': 3.6e+6,
+      'Microsecond (µs)': 3.6e+9,
+      'Nanosecond (ns)': 3.6e+12,
+      'Minute (min)': 60,
+      'Hour (h)': 1,
+      'Day (d)': 1/24,
+      'Week (wk)': 1/168,
+      'Month (mo)': 1/730,
+      'Year (yr)': 1/8760,
+    },
+    'Day (d)': {
+      'Second (s)': 86400,
+      'Millisecond (ms)': 8.64e+7,
+      'Microsecond (µs)': 8.64e+10,
+      'Nanosecond (ns)': 8.64e+13,
+      'Minute (min)': 1440,
+      'Hour (h)': 24,
+      'Day (d)': 1,
+      'Week (wk)': 1/7,
+      'Month (mo)': 1/30.44,
+      'Year (yr)': 1/365.25,
+    },
+    'Week (wk)': {
+      'Second (s)': 604800,
+      'Millisecond (ms)': 6.048e+8,
+      'Microsecond (µs)': 6.048e+11,
+      'Nanosecond (ns)': 6.048e+14,
+      'Minute (min)': 10080,
+      'Hour (h)': 168,
+      'Day (d)': 7,
+      'Week (wk)': 1,
+      'Month (mo)': 1/4.345,
+      'Year (yr)': 1/52.1775,
+    },
+    'Month (mo)': {
+      'Second (s)': 2.628e+6,
+      'Millisecond (ms)': 2.628e+9,
+      'Microsecond (µs)': 2.628e+12,
+      'Nanosecond (ns)': 2.628e+15,
+      'Minute (min)': 43800,
+      'Hour (h)': 730,
+      'Day (d)': 30.44,
+      'Week (wk)': 4.345,
+      'Month (mo)': 1,
+      'Year (yr)': 1/12,
+    },
+    'Year (yr)': {
+      'Second (s)': 3.154e+7,
+      'Millisecond (ms)': 3.154e+10,
+      'Microsecond (µs)': 3.154e+13,
+      'Nanosecond (ns)': 3.154e+16,
+      'Minute (min)': 525600,
+      'Hour (h)': 8760,
+      'Day (d)': 365.25,
+      'Week (wk)': 52.1775,
+      'Month (mo)': 12,
+      'Year (yr)': 1,
+    },
+  };
+
+  useEffect(() => {
+    if (conversionFactors[time]) {
+      setData(conversionFactors[time]);
+    }
+  }, [time]);
+
+  return data;
+}

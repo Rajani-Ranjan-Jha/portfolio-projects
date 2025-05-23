@@ -1,0 +1,136 @@
+import { useEffect, useState } from 'react';
+
+export default function useAreaInfo(area) {
+  const [data, setData] = useState({});
+
+  const conversionFactors = {
+    'Square Kilometer(km²)': {
+      'Square Kilometer(km²)': 1,
+      'Square Meter(m²)': 1000000,
+      'Square Centimeter(cm²)': 10000000000,
+      'Square Millimeter(mm²)': 1000000000000,
+      'Square Mile(mi²)': 0.386102,
+      'Square Yard(yd²)': 1195990,
+      'Square Foot(ft²)': 10763910,
+      'Square Inch(in²)': 1550003100,
+      'Hectare(ha)': 100,
+      'Acre(ac)': 247.105,
+    },
+    'Square Meter(m²)': {
+      'Square Kilometer(km²)': 0.000001,
+      'Square Meter(m²)': 1,
+      'Square Centimeter(cm²)': 10000,
+      'Square Millimeter(mm²)': 1000000,
+      'Square Mile(mi²)': 0.000000386102,
+      'Square Yard(yd²)': 1.19599,
+      'Square Foot(ft²)': 10.7639,
+      'Square Inch(in²)': 1550,
+      'Hectare(ha)': 0.0001,
+      'Acre(ac)': 0.000247105,
+    },
+    'Square Centimeter(cm²)': {
+      'Square Kilometer(km²)': 0.0000000001,
+      'Square Meter(m²)': 0.0001,
+      'Square Centimeter(cm²)': 1,
+      'Square Millimeter(mm²)': 100,
+      'Square Mile(mi²)': 3.86102e-11,
+      'Square Yard(yd²)': 0.000119599,
+      'Square Foot(ft²)': 0.00107639,
+      'Square Inch(in²)': 0.155,
+      'Hectare(ha)': 1e-8,
+      'Acre(ac)': 2.47105e-8,
+    },
+    'Square Millimeter(mm²)': {
+      'Square Kilometer(km²)': 1e-12,
+      'Square Meter(m²)': 0.000001,
+      'Square Centimeter(cm²)': 0.01,
+      'Square Millimeter(mm²)': 1,
+      'Square Mile(mi²)': 3.86102e-14,
+      'Square Yard(yd²)': 1.19599e-6,
+      'Square Foot(ft²)': 1.07639e-5,
+      'Square Inch(in²)': 0.00155,
+      'Hectare(ha)': 1e-10,
+      'Acre(ac)': 2.47105e-10,
+    },
+    'Square Mile(mi²)': {
+      'Square Kilometer(km²)': 2.58999,
+      'Square Meter(m²)': 2589988,
+      'Square Centimeter(cm²)': 2.58999e10,
+      'Square Millimeter(mm²)': 2.58999e12,
+      'Square Mile(mi²)': 1,
+      'Square Yard(yd²)': 3.098e6,
+      'Square Foot(ft²)': 2.788e7,
+      'Square Inch(in²)': 4.014e9,
+      'Hectare(ha)': 258.999,
+      'Acre(ac)': 640,
+    },
+    'Square Yard(yd²)': {
+      'Square Kilometer(km²)': 8.3613e-7,
+      'Square Meter(m²)': 0.836127,
+      'Square Centimeter(cm²)': 8361.27,
+      'Square Millimeter(mm²)': 836127,
+      'Square Mile(mi²)': 3.2283e-7,
+      'Square Yard(yd²)': 1,
+      'Square Foot(ft²)': 9,
+      'Square Inch(in²)': 1296,
+      'Hectare(ha)': 8.3613e-5,
+      'Acre(ac)': 0.000206612,
+    },
+    'Square Foot(ft²)': {
+      'Square Kilometer(km²)': 9.2903e-8,
+      'Square Meter(m²)': 0.092903,
+      'Square Centimeter(cm²)': 929.03,
+      'Square Millimeter(mm²)': 92903,
+      'Square Mile(mi²)': 3.587e-8,
+      'Square Yard(yd²)': 0.111111,
+      'Square Foot(ft²)': 1,
+      'Square Inch(in²)': 144,
+      'Hectare(ha)': 9.2903e-6,
+      'Acre(ac)': 2.2957e-5,
+    },
+    'Square Inch(in²)': {
+      'Square Kilometer(km²)': 6.4516e-10,
+      'Square Meter(m²)': 0.00064516,
+      'Square Centimeter(cm²)': 6.4516,
+      'Square Millimeter(mm²)': 645.16,
+      'Square Mile(mi²)': 2.491e-10,
+      'Square Yard(yd²)': 0.000771605,
+      'Square Foot(ft²)': 0.00694444,
+      'Square Inch(in²)': 1,
+      'Hectare(ha)': 6.4516e-8,
+      'Acre(ac)': 1.5942e-7,
+    },
+    'Hectare(ha)': {
+      'Square Kilometer(km²)': 0.01,
+      'Square Meter(m²)': 10000,
+      'Square Centimeter(cm²)': 100000000,
+      'Square Millimeter(mm²)': 10000000000,
+      'Square Mile(mi²)': 0.00386102,
+      'Square Yard(yd²)': 11959.9,
+      'Square Foot(ft²)': 107639,
+      'Square Inch(in²)': 15500031,
+      'Hectare(ha)': 1,
+      'Acre(ac)': 2.47105,
+    },
+    'Acre(ac)': {
+      'Square Kilometer(km²)': 0.00404686,
+      'Square Meter(m²)': 4046.86,
+      'Square Centimeter(cm²)': 40468600,
+      'Square Millimeter(mm²)': 4046860000,
+      'Square Mile(mi²)': 0.0015625,
+      'Square Yard(yd²)': 4840,
+      'Square Foot(ft²)': 43560,
+      'Square Inch(in²)': 6272640,
+      'Hectare(ha)': 0.404686,
+      'Acre(ac)': 1,
+    },
+  };
+
+  useEffect(() => {
+    if (conversionFactors[area]) {
+      setData(conversionFactors[area]);
+    }
+  }, [area]);
+
+  return data;
+}

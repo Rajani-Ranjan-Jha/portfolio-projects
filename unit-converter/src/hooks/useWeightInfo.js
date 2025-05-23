@@ -1,0 +1,136 @@
+import { useEffect, useState } from 'react';
+
+export default function useWeightInfo(weight) {
+  const [data, setData] = useState({});
+
+  const conversionFactors = {
+    'Kilogram(kg)': {
+      'Kilogram(kg)': 1,
+      'Gram(g)': 1000,
+      'Milligram(mg)': 1000000,
+      'Metric Ton(t)': 0.001,
+      'Long Ton': 0.000984207,
+      'Short Ton': 0.00110231,
+      'Pound(lb)': 2.20462,
+      'Ounce(oz)': 35.274,
+      'Carrat(ct)': 5000,
+      'Atomic Mass Unit(amu)': 6.02214e+26,
+    },
+    'Gram(g)': {
+      'Kilogram(kg)': 0.001,
+      'Gram(g)': 1,
+      'Milligram(mg)': 1000,
+      'Metric Ton(t)': 0.000001,
+      'Long Ton': 9.8421e-7,
+      'Short Ton': 1.1023e-6,
+      'Pound(lb)': 0.00220462,
+      'Ounce(oz)': 0.035274,
+      'Carrat(ct)': 5,
+      'Atomic Mass Unit(amu)': 6.02214e+23,
+    },
+    'Milligram(mg)': {
+      'Kilogram(kg)': 0.000001,
+      'Gram(g)': 0.001,
+      'Milligram(mg)': 1,
+      'Metric Ton(t)': 1e-9,
+      'Long Ton': 9.8421e-10,
+      'Short Ton': 1.1023e-9,
+      'Pound(lb)': 2.2046e-6,
+      'Ounce(oz)': 3.5274e-5,
+      'Carrat(ct)': 0.005,
+      'Atomic Mass Unit(amu)': 6.02214e+20,
+    },
+    'Metric Ton(t)': {
+      'Kilogram(kg)': 1000,
+      'Gram(g)': 1000000,
+      'Milligram(mg)': 1000000000,
+      'Metric Ton(t)': 1,
+      'Long Ton': 0.984207,
+      'Short Ton': 1.10231,
+      'Pound(lb)': 2204.62,
+      'Ounce(oz)': 35274,
+      'Carrat(ct)': 5000000,
+      'Atomic Mass Unit(amu)': 6.02214e+29,
+    },
+    'Long Ton': {
+      'Kilogram(kg)': 1016.05,
+      'Gram(g)': 1016046.91,
+      'Milligram(mg)': 1016046900,
+      'Metric Ton(t)': 1.01605,
+      'Long Ton': 1,
+      'Short Ton': 1.12,
+      'Pound(lb)': 2240,
+      'Ounce(oz)': 35840,
+      'Carrat(ct)': 5080238,
+      'Atomic Mass Unit(amu)': 6.112e+29,
+    },
+    'Short Ton': {
+      'Kilogram(kg)': 907.185,
+      'Gram(g)': 907184.74,
+      'Milligram(mg)': 907184740,
+      'Metric Ton(t)': 0.907185,
+      'Long Ton': 0.892857,
+      'Short Ton': 1,
+      'Pound(lb)': 2000,
+      'Ounce(oz)': 32000,
+      'Carrat(ct)': 4535920,
+      'Atomic Mass Unit(amu)': 5.787e+29,
+    },
+    'Pound(lb)': {
+      'Kilogram(kg)': 0.453592,
+      'Gram(g)': 453.592,
+      'Milligram(mg)': 453592,
+      'Metric Ton(t)': 0.000453592,
+      'Long Ton': 0.000446429,
+      'Short Ton': 0.0005,
+      'Pound(lb)': 1,
+      'Ounce(oz)': 16,
+      'Carrat(ct)': 2267.96,
+      'Atomic Mass Unit(amu)': 2.588e+28,
+    },
+    'Ounce(oz)': {
+      'Kilogram(kg)': 0.0283495,
+      'Gram(g)': 28.3495,
+      'Milligram(mg)': 28349.5,
+      'Metric Ton(t)': 2.835e-5,
+      'Long Ton': 2.788e-5,
+      'Short Ton': 3.125e-5,
+      'Pound(lb)': 0.0625,
+      'Ounce(oz)': 1,
+      'Carrat(ct)': 141.748,
+      'Atomic Mass Unit(amu)': 1.618e+27,
+    },
+    'Carrat(ct)': {
+      'Kilogram(kg)': 0.0002,
+      'Gram(g)': 0.2,
+      'Milligram(mg)': 200,
+      'Metric Ton(t)': 2e-7,
+      'Long Ton': 1.97e-7,
+      'Short Ton': 2.2e-7,
+      'Pound(lb)': 0.000441,
+      'Ounce(oz)': 0.00705479,
+      'Carrat(ct)': 1,
+      'Atomic Mass Unit(amu)': 1.138e+25,
+    },
+    'Atomic Mass Unit(amu)': {
+      'Kilogram(kg)': 1.66054e-27,
+      'Gram(g)': 1.66054e-24,
+      'Milligram(mg)': 1.66054e-21,
+      'Metric Ton(t)': 1.66054e-30,
+      'Long Ton': 1.63871e-30,
+      'Short Ton': 1.82186e-30,
+      'Pound(lb)': 3.66086e-27,
+      'Ounce(oz)': 6.58212e-26,
+      'Carrat(ct)': 8.792e-26,
+      'Atomic Mass Unit(amu)': 1,
+    },
+  };
+
+  useEffect(() => {
+    if (conversionFactors[weight]) {
+      setData(conversionFactors[weight]);
+    }
+  }, [weight]);
+
+  return data;
+}
