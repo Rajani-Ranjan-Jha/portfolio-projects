@@ -8,7 +8,7 @@ export async function loginAdmin(formData) {
   const email = formData.get("email");
   const password = formData.get("password");
   try {
-    const response = await fetch(`http://localhost:${PORT}/admin/login`, {
+    const response = await fetch(`${PORT}/admin/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -45,7 +45,7 @@ export async function loginAdmin(formData) {
 export async function logoutAdmin() {
   try {
     console.log('going to logout')
-    const response = await fetch(`http://localhost:${PORT}/admin/logout`, {
+    const response = await fetch(`${PORT}/admin/logout`, {
       method: "POST",
       credentials: "include",
     });
@@ -66,7 +66,7 @@ export async function logoutAdmin() {
 //CREATE
 export async function SendData(siteData) {
   try {
-    const response = await fetch(`http://localhost:${PORT}/api/web`, {
+    const response = await fetch(`${PORT}/api/web`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -96,7 +96,7 @@ export async function SendData(siteData) {
 //UPDATE
 export async function UpdateData(id, NewData) {
   try {
-    const response = await fetch(`http://localhost:${PORT}/api/web/${id}`, {
+    const response = await fetch(`${PORT}/api/web/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -123,7 +123,7 @@ export async function UpdateData(id, NewData) {
 export async function DeleteData(id) {
   try {
     // console.log(`going to delete for ID: ${id}`)
-    const response = await fetch(`http://localhost:${PORT}/api/web/${id}`, {
+    const response = await fetch(`${PORT}/api/web/${id}`, {
       method: "DELETE",
     });
     const result = await response.json();

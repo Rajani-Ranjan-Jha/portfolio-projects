@@ -49,7 +49,8 @@ const User = () => {
     const getDataFromServer = async () => {
         try {
             // Fetch data from server
-            const res = await fetch(`http://localhost:${PORT}/api/web`, {
+            console.log(`Fetching data from server at: ${PORT}`);
+            const res = await fetch(`${PORT}/api/web`, {
                 // const res = await fetch(`https://mwk85l3b-${PORT}.inc1.devtunnels.ms`, {
                 method: "GET",
                 headers: {

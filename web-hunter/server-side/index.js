@@ -19,9 +19,7 @@ const PORT = 3000;
 
 app.use(cors({
   origin: [
-    `http://localhost:${CLIENT_PORT}`,
-    'https://mwk85l3b-5173.inc1.devtunnels.ms',
-    'https://mwk85l3b-3000.inc1.devtunnels.ms'
+    `${CLIENT_PORT}`
   ],
   credentials: true
 }));

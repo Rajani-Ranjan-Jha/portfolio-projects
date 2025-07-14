@@ -6,7 +6,8 @@ const PORT = import.meta.env.VITE_PORT;
 export const AuthorizeAdmin = async () => {
   const dispatch = useDispatch()
   try {
-    const res = await fetch(`http://localhost:${PORT}/authorize-admin`, {
+    console.log(`Accessing admin authorization at ${PORT}/authorize-admin`);
+    const res = await fetch(`${PORT}/authorize-admin`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

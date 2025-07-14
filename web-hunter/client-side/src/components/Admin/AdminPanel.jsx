@@ -51,7 +51,7 @@ const AdminPanel = () => {
     //
     async function Generate(url) {
         setIsPending(true)
-        const res = await fetch(`http://localhost:${PORT}/generate`, {
+        const res = await fetch(`${PORT}/generate`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

@@ -4,7 +4,7 @@ const HitandGenerate =  (url) => {
 
   async function Generate (url){
 
-    const res = await fetch(`http://localhost:${PORT}/generate`, {
+    const res = await fetch(`${PORT}/generate`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
