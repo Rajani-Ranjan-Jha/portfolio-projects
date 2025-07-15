@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import './App.css'
+// import './App.css'
 
 import { Download, Scan } from 'lucide-react';
 import { QRCodeCanvas as QRCode } from 'qrcode.react';
@@ -29,7 +29,7 @@ function QRCodeGenerator() {
     return (
         <div className='w-screen h-screen flex justify-center items-center bg-violet-200'>
 
-            <div className="w-1/2 mx-auto p-10 h-9/10 flex flex-col justify-between bg-violet-300 shadow-2xl rounded-2xl">
+            <div className="w-full md:w-1/2 mx-auto p-10 h-9/10 flex flex-col justify-between bg-violet-300 shadow-2xl rounded-2xl">
 
                 {/* Controls */}
                 <div>
@@ -57,7 +57,7 @@ function QRCodeGenerator() {
 
 
                 {/* QR Code Preview and Color Options */}
-                <div className='flex  w-full jusify-between py-10'>
+                <div className='flex flex-col md:flex-row w-full jusify-between items-center gap-4 py-10'>
 
                     <div className='w-1/2 flex flex-col justify-center'>
 

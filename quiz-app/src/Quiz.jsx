@@ -119,7 +119,7 @@ const Quiz = ({ category }) => {
                                 </li>
                             ))}
                         </ol>
-                        <div className='flex justify-between items-center mt-4'>
+                        <div className='flex justify-between items-center gap-5 mt-4'>
 
                             {currentQuestion > 0 ? (<button
                                 className="mx-auto py-2 px-5 text-base rounded border-none bg-indigo-600 text-white transition-colors duration-300 hover:bg-indigo-700"

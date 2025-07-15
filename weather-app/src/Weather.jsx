@@ -43,19 +43,19 @@ function Weather() {
   return (
     <>
       <div className='w-full h-screen bg-gradient-to-r from-blue-400 via-violet-400 to-blue-500 flex flex-col items-center'>
-        <h1 className='text-4xl py-5 text-white font-bold'>Weather App</h1>
+        <h1 className='text-4xl py-5 text-white font-semibold'>Weather App</h1>
         <div className="w-10/12 max-w-md flex flex-col justify-around items-center bg-white bg-opacity-30 backdrop-blur-md rounded-2xl p-6 shadow-lg">
           <div className="w-full flex justify-center items-center mb-6">
             <input
               type="text"
               placeholder='Enter the location'
-              className='flex-grow p-2 shadow-md border border-indigo-600 rounded-l-xl focus:outline-none focus:ring-1 focus:ring-indigo-800'
+              className='p-2 shadow-md border border-indigo-600 rounded-l-xl focus:outline-none focus:ring-1 focus:ring-indigo-800'
               value={cityName}
               onChange={(e) => setCityName(e.target.value)}
               onKeyDown={(e) => { if (e.key === 'Enter') search() }}
             />
             <button
-              className='p-2 bg-indigo-600 text-white rounded-r-xl shadow-md focus:ring-1 focus:ring-indigo-800'
+              className='p-2 bg-indigo-600 text-white rounded-r-xl shadow-md border-indigo-600  focus:ring-1 focus:ring-indigo-800'
               type='button'
               onClick={search}
             >
